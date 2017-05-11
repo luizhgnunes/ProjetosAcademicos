@@ -172,7 +172,6 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DAL\Connection.cs" />
     <Compile Include="DAL\DestinatarioDal.cs" />
-    <Compile Include="DAL\MunicipioDal.cs" />
     <Compile Include="DAL\NotaFiscalDal.cs" />
     <Compile Include="DAL\UsuarioDal.cs" />
     <Compile Include="Global.asax.cs">
