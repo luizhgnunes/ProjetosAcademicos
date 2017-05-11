@@ -9,13 +9,13 @@ namespace SmallRoadWeb.Models.Entities
     {
 
         public int Numero { get; set; }
-        public String Nome { get; set; }
-        public String Cpf { get; set; }
-        public String Latitude { get; set; }
-        public String Longitude { get; set; }
-        public String Endereço { get; set; }
-        public String Bairro { get; set; }
-        public String Cep { get; set; }
+        public string Nome { get; set; }
+        public string Cpf { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
+        public string Endereço { get; set; }
+        public string Bairro { get; set; }
+        public string Cep { get; set; }
         public Municipio Municipio { get; set; }
         public int Ddd { get;set; }
         public int Telefone { get; set; }
