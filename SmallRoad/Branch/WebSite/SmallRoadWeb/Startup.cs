@@ -8,7 +8,7 @@ namespace SmallRoadWeb
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app); // teste de commit RODRIGO
+            ConfigureAuth(app); // teste de commit
         }
     }
 }
