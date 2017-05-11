@@ -182,6 +182,7 @@
     <Compile Include="Models\Entities\Destinatario.cs" />
     <Compile Include="Models\Entities\Municipio.cs" />
     <Compile Include="Models\Entities\NotaFiscal.cs" />
+    <Compile Include="Models\Entities\RoteiroMotorista.cs" />
     <Compile Include="Models\Entities\Usuario.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
