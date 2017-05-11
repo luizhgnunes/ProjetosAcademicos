@@ -72,10 +72,10 @@ namespace SmallRoadWeb.DAL
 
         }
 
-        public Municipio EncontrarMunicipioPorId(int id)
+        public Municipio PesquisarMunicipioPorId(int id)
         {
             Municipio municipio = new Municipio();
-            String query = @"SELECT * TB_MUNICIPIO WHERE (MUN_ID = @Id);";
+            String query = @"SELECT * FROM TB_MUNICIPIO WHERE (MUN_ID = @Id);";
             SqlCommand cmd = new SqlCommand(query, conn);
             if (cmd.ExecuteNonQuery() > 0)
             {
@@ -87,6 +87,21 @@ namespace SmallRoadWeb.DAL
 
             return null;
          }
+
+        public List<Municipio> PesquisarTodosMunicipios()
+        {
+            List<Municipio> municipios = new List<Municipio>();
+            String query = @"SELECT * FROM TB_MUNICIPIO;";
+            //Galindo Escrever o comando que retorna todos os resultados do sql aqui
+            foreach (Municipio municipio in municipios) {
+
+
+            }
+
+            return municipios;
+
+
+        }
 
 
 
