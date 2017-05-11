@@ -8,7 +8,7 @@ namespace SmallRoadWeb.Models.Entities
     public class Municipio
     {
         public int id { get; set; }
-        public String uf {get;set;}
+        public String Uf {get;set;}
         public String Nome { get; set; }
     }
 }

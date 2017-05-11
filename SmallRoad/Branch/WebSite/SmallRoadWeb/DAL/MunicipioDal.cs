@@ -79,9 +79,9 @@ namespace SmallRoadWeb.DAL
             SqlCommand cmd = new SqlCommand(query, conn);
             if (cmd.ExecuteNonQuery() > 0)
             {
-                cmd.Parameters["@ID"].Value = municipio.Id;
-                cmd.Parameters["@Uf"].Value = municipio.Uf;
-                cmd.Parameters["@Nome"].Value = municipio.Nome;
+                municipio.Id = cmd.Parameters["@ID"].Value;
+                municipio.Uf = cmd.Parameters["@Uf"].Value;
+                municipio.Nome = cmd.Parameters["@Nome"].Value;
                 return municipio;
             }
 
