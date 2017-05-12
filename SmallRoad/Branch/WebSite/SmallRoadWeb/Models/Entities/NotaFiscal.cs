@@ -11,6 +11,6 @@ namespace SmallRoadWeb.Models.Entities
         public double Valor { get; set; }
         public DateTime Data { get; set; }
         public DateTime PrazoEntrega { get; set; }
-
+        
     }
 }

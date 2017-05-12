@@ -171,12 +171,18 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DAL\Connection.cs" />
+    <Compile Include="DAL\DestinatarioDal.cs" />
     <Compile Include="DAL\NotaFiscalDal.cs" />
+    <Compile Include="DAL\UsuarioDal.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Entities\Destinatario.cs" />
+    <Compile Include="Models\Entities\Municipio.cs" />
     <Compile Include="Models\Entities\NotaFiscal.cs" />
+    <Compile Include="Models\Entities\RoteiroMotorista.cs" />
+    <Compile Include="Models\Entities\Usuario.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
