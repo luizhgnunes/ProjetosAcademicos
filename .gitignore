@@ -4,3 +4,6 @@
 
 /SmallRoad/Branch/WebSite/packages
 /SmallRoad/Branch/WebSite/SmallRoadWeb/bin
+/SmallRoad/Branch/WebSite/SmallRoadWeb/obj
+/SmallRoad/Branch/WebSite/SmallRoadWeb.Tests/obj/Debug
+/SmallRoad/Branch/WebSite/SmallRoadWeb.Tests/bin/Debug
