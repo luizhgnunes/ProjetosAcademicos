@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 06-Maio-2017 às 19:26
+-- Generation Time: 15-Maio-2017 às 00:22
 -- Versão do servidor: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -37,7 +37,7 @@ CREATE TABLE `tb_destinatario` (
   `DES_CEP` char(8) NOT NULL,
   `MUN_ID` int(11) NOT NULL,
   `DES_DDD` char(2) NOT NULL,
-  `DES_TELEFONE` varchar(2) NOT NULL,
+  `DES_TELEFONE` varchar(10) NOT NULL,
   `DES_DATA_CAD` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -5693,7 +5693,6 @@ INSERT INTO `tb_municipio` (`mun_id`, `est_uf`, `mun_nome`) VALUES
 
 CREATE TABLE `tb_nota_fiscal` (
   `NF_NUMERO` int(11) NOT NULL,
-  `NF_VALOR` double NOT NULL,
   `NF_DATA` datetime NOT NULL,
   `NF_PRAZO_ENTREGA` date NOT NULL,
   `DES_ID` int(11) NOT NULL
@@ -5708,6 +5707,7 @@ CREATE TABLE `tb_nota_fiscal` (
 CREATE TABLE `tb_roteiro_motorista` (
   `RM_ID` int(11) NOT NULL,
   `USU_ID` int(11) NOT NULL,
+  `VEI_PLACA` char(8) NOT NULL,
   `RM_DATA_ENTREGA` date NOT NULL,
   `RM_OBSERVACAO` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -5747,7 +5747,6 @@ CREATE TABLE `tb_usuario` (
   `USU_DATA_CAD` datetime NOT NULL,
   `USU_DATA_ATUALIZACAO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `USU_ULTIMO_ACESSO` datetime NOT NULL,
-  `USU_IP_CAD` varchar(33) NOT NULL,
   `USU_UNIQID` char(32) NOT NULL,
   `USU_DATA_CONFIRMACAO` datetime NOT NULL,
   `USU_USU_CONFIRMACAO` char(1) NOT NULL COMMENT 'S = Sim; N = Não.',
@@ -5761,14 +5760,10 @@ CREATE TABLE `tb_usuario` (
 --
 
 CREATE TABLE `tb_veiculo` (
-  `VEI_ID` int(11) NOT NULL,
+  `VEI_PLACA` char(8) NOT NULL,
   `VEI_NOME` varchar(30) NOT NULL,
   `VEI_MARCA` varchar(30) NOT NULL,
-  `VEI_MODELO` varchar(30) NOT NULL,
-  `VEI_ALTURA` float NOT NULL,
-  `VEI_COMPRIMENTO` float NOT NULL,
-  `VEI_VOLUME` float NOT NULL,
-  `VEI_PESO_MAX` float NOT NULL
+  `VEI_MODELO` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5816,7 +5811,8 @@ ALTER TABLE `tb_nota_fiscal`
 --
 ALTER TABLE `tb_roteiro_motorista`
   ADD PRIMARY KEY (`RM_ID`),
-  ADD KEY `USU_ID` (`USU_ID`);
+  ADD KEY `USU_ID` (`USU_ID`),
+  ADD KEY `VEI_PLACA` (`VEI_PLACA`);
 
 --
 -- Indexes for table `tb_status_entrega`
@@ -5837,7 +5833,7 @@ ALTER TABLE `tb_usuario`
 -- Indexes for table `tb_veiculo`
 --
 ALTER TABLE `tb_veiculo`
-  ADD PRIMARY KEY (`VEI_ID`);
+  ADD PRIMARY KEY (`VEI_PLACA`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -5874,11 +5870,6 @@ ALTER TABLE `tb_status_entrega`
 ALTER TABLE `tb_usuario`
   MODIFY `USU_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `tb_veiculo`
---
-ALTER TABLE `tb_veiculo`
-  MODIFY `VEI_ID` int(11) NOT NULL AUTO_INCREMENT;
---
 -- Constraints for dumped tables
 --
 
@@ -5912,7 +5903,8 @@ ALTER TABLE `tb_nota_fiscal`
 -- Limitadores para a tabela `tb_roteiro_motorista`
 --
 ALTER TABLE `tb_roteiro_motorista`
-  ADD CONSTRAINT `TB_ROTEIRO_MOTORISTA_FK01` FOREIGN KEY (`USU_ID`) REFERENCES `tb_usuario` (`USU_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `TB_ROTEIRO_MOTORISTA_FK01` FOREIGN KEY (`USU_ID`) REFERENCES `tb_usuario` (`USU_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `TB_ROTEIRO_MOTORISTA_FK02` FOREIGN KEY (`VEI_PLACA`) REFERENCES `tb_veiculo` (`VEI_PLACA`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `tb_usuario`

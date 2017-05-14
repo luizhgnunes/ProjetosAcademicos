@@ -7,7 +7,7 @@ namespace SmallRoadWeb.Models.Entities
 {
     public class Destinatario
     {
-
+        public int Id { get; set; }
         public int Numero { get; set; }
         public string Nome { get; set; }
         public string Cpf { get; set; }
@@ -20,9 +20,5 @@ namespace SmallRoadWeb.Models.Entities
         public int Ddd { get;set; }
         public int Telefone { get; set; }
         public DateTime DtCadastro { get; set; }
-
-
-
-
     }
 }

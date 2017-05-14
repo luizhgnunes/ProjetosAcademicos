@@ -12,7 +12,8 @@ namespace SmallRoadWeb.DAL
     // Esta classe é responsável por criar uma conexão com o banco de dados de forma genérica
     public class Connection
     {
-        private static string connString = @"Server=bd-small-road.mysql.uhserver.com;Database=bd_small_road;Uid=smallroadapp;Pwd=grgfg2017*FG;";
+        private static string connString = @"Server=bd-small-road.mysql.uhserver.com; Port=3306; Database=bd_small_road; Uid=smallroadapp; Pwd=grgfg2017*FG;";
+        //private static string connString = @"Server=localhost; Port=3306; Database=bd_small_road; Uid=root; Pwd=;";
         private static MySqlConnection conn = null; // Objeto que vai receber a conexão
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace SmallRoadWeb.DAL
         {
             try
             {
-                //if(connection.State == ConnectionState.Open)
+                //if(conn.State == ConnectionState.Open)
                 if (conn != null) // Se a conexão estiver estabelecida
                 {
                     conn.Close(); // Fecha a conexão

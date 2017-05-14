@@ -61,15 +61,57 @@ namespace SmallRoadWeb.Tests.Controllers
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void CadastrarNotaFiscal()
         {
             NotaFiscal notaFiscal = new NotaFiscal();
             notaFiscal.Data = DateTime.Now;
             notaFiscal.PrazoEntrega = new DateTime(2017, 5, 30);
+            notaFiscal.Destinatario = new Models.Entities.Destinatario();
+            notaFiscal.Destinatario.Id = 1;
 
             NotaFiscalController nfController = new NotaFiscalController();
 
             Assert.IsTrue(nfController.Cadastrar(notaFiscal));
+        }
+
+        [TestMethod]
+        public void ObterNotaFiscalPorNumero()
+        {
+            NotaFiscal notaFiscal = new NotaFiscal();
+            notaFiscal.Numero = 1;
+            notaFiscal.Data = new DateTime(2017, 5, 14);
+            notaFiscal.PrazoEntrega = new DateTime(2017, 5, 30);
+            notaFiscal.Destinatario = new Models.Entities.Destinatario();
+            notaFiscal.Destinatario.Id = 1;
+
+            NotaFiscalController nfController = new NotaFiscalController();
+
+            NotaFiscal notaFiscalRetornada = nfController.ObterRegistro(notaFiscal.Numero);
+
+            //Assert.Equals(notaFiscal, notaFiscalRetornada);
+            Assert.AreEqual(notaFiscalRetornada.Destinatario.Id, 1);
+        }
+
+        [TestMethod]
+        public void Alterar()
+        {
+            NotaFiscal notaFiscal = new NotaFiscal();
+            notaFiscal.Numero = 1;
+            notaFiscal.Data = new DateTime(2017, 5, 14);
+            notaFiscal.PrazoEntrega = new DateTime(2017, 5, 29);
+            notaFiscal.Destinatario = new Models.Entities.Destinatario();
+            notaFiscal.Destinatario.Id = 1;
+
+            NotaFiscalController nfController = new NotaFiscalController();
+
+            Assert.IsTrue(nfController.Alterar(notaFiscal));
+        }
+
+        [TestMethod]
+        public void Deletar()
+        {
+            NotaFiscalController nfController = new NotaFiscalController();
+            Assert.IsTrue(nfController.Deletar(1));
         }
     }
 }

@@ -21,11 +21,28 @@ namespace SmallRoadWeb.Controllers
         public bool Cadastrar(NotaFiscal notaFiscal)
         {
             NotaFiscalDal notaFiscalDal = new NotaFiscalDal();
+            return notaFiscalDal.Cadastrar(notaFiscal);
+        }
 
-            if (!notaFiscalDal.Cadastrar(notaFiscal))
-                return true;
-            else
-                return false;
+        [HttpPost]
+        public NotaFiscal ObterRegistro(int nfNumero)
+        {
+            NotaFiscalDal notaFiscalDal = new NotaFiscalDal();
+            return notaFiscalDal.ObterRegistro(nfNumero);
+        }
+
+        [HttpPost]
+        public bool Alterar(NotaFiscal notaFiscal)
+        {
+            NotaFiscalDal notaFiscalDal = new NotaFiscalDal();
+            return notaFiscalDal.Alterar(notaFiscal);
+        }
+
+        [HttpPost]
+        public bool Deletar(int nfnumero)
+        {
+            NotaFiscalDal notaFiscalDal = new NotaFiscalDal();
+            return notaFiscalDal.Deletar(nfnumero);
         }
     }
 }
