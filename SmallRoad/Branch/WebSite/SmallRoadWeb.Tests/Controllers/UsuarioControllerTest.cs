@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmallRoadWeb.Models.Entities;
 using SmallRoadWeb.Controllers;
+using System.Web.Services;
 
 namespace SmallRoadWeb.Tests.Controllers
 {
@@ -9,6 +10,7 @@ namespace SmallRoadWeb.Tests.Controllers
     public class UsuarioControllerTest
     {
         [TestMethod]
+        //[WebMethod(EnableSession = true)]
         public void Logar()
         {
             Usuario usuario = new Usuario();
@@ -20,6 +22,7 @@ namespace SmallRoadWeb.Tests.Controllers
         }
 
         [TestMethod]
+        //[WebMethod(EnableSession = true)]
         public void LogarSenhaErrada()
         {
             Usuario usuario = new Usuario();

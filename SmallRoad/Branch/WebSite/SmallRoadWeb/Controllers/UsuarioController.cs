@@ -3,8 +3,8 @@ using SmallRoadWeb.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.Web.Services;
 
 namespace SmallRoadWeb.Controllers
 {
@@ -31,8 +31,10 @@ namespace SmallRoadWeb.Controllers
         }
 
         [HttpPost]
+        //[WebMethod(EnableSession = true)]
         public bool Logar(Usuario usuario)
         {
+            //System.Web.HttpContext.Current.Session["Logado"] = "true";
             UsuarioDal usuarioDal = new UsuarioDal();
             return usuarioDal.Logar(usuario);
         }
