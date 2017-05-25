@@ -26,7 +26,7 @@ namespace SmallRoadWeb.DAL
                 cmd.Parameters.AddWithValue("@Senha", GerarHashMd5(usuario.Senha));
                 MySqlDataReader dados = cmd.ExecuteReader(); // Aguarda o resltado em um data Reader
 
-                //HttpContext.Current.Session["Logado"] = "true";
+                HttpContext.Current.Session["Logado"] = "true";
 
                 UsuarioController.Logado = dados.HasRows;
 

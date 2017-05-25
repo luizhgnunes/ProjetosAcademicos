@@ -1,7 +1,8 @@
-﻿var app = angular.module("HomeApp", ['ui.bootstrap']);
+﻿var app = angular.module("RoteiroMotoristaApp", ['ui.bootstrap']);
 
-app.controller('HomeController', function ($scope, $http) {
+app.controller('RoteiroMotoristaController', function ($scope, $http) {
 
+    /*
     $scope.logar = function () {
         $http({
             url: '/Usuario/Logar',
@@ -10,7 +11,7 @@ app.controller('HomeController', function ($scope, $http) {
         })
             .success(function (data, status, headers, config) {
                 if (data == "True") {
-                    window.location.href = "/RoteiroMotorista/";
+                    window.location.href = "/User/";
                 } else {
                     alert("Usuário ou senha inválidos.");
                 }
@@ -20,6 +21,6 @@ app.controller('HomeController', function ($scope, $http) {
                 console.log("Erro: " + status + "\nConfig: " + JSON.stringify(config) + "\nData:\n" + data);
             });
     };
-
+    */
 });
 
