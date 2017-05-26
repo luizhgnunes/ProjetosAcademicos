@@ -5,6 +5,32 @@
 <div ng-app="RoteiroMotoristaApp">
     <div ng-controller="RoteiroMotoristaController" class="container-fluid">
         <h1>Entregas a Realizar</h1>
+        <div class="row">
+            <!-- Table Area-->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Destinatário</th>
+                            <th>Bairro</th>
+                            <th>Prazo</th>
+                            <th>Observação</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @*<tr ng-repeat="i in (carrinhoDeCompras).slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+                            <td>{{i.NomeProduto}}</td>
+                            <td>{{i.Categoria.Nome}}</td>
+                            <td>{{i.Quantidade}}</td>
+                            <td>{{i.Importado == "S" && "Sim" || "Não"}}</td>
+                            <td><span ng-click="removerItemDoCarrinho(i)" class="glyphicon glyphicon-remove action-icon" aria-hidden="true" data-placement="top" title="Remover item do carrinho" style="color:red; cursor: pointer"></span></td>
+                        </tr>*@
+                    </tbody>
+                </table>
+                @*<span id="no-result" ng-show="carrinhoDeCompras.length == 0">Seu carrinho está vazio.</span>*@
+            </div>
+        </div>
         <hr />
         <h1>Roteiro</h1>
     </div>

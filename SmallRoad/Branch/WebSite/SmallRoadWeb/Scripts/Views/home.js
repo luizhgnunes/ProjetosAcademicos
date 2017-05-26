@@ -9,10 +9,14 @@ app.controller('HomeController', function ($scope, $http) {
             data: { Usuario: $scope.Usuario }
         })
             .success(function (data, status, headers, config) {
-                if (data == "True") {
-                    window.location.href = "/RoteiroMotorista/";
+
+                if (data == "") {
+                    alert("Usuário ou senha inválidos");
                 } else {
-                    alert("Usuário ou senha inválidos.");
+                    if (data.TipoUsuario == "G")
+                        window.location = "/RoteiroGerente/";
+                    else
+                        window.location = "/RoteiroMotorista/";
                 }
             })
             .error(function (data, status, headers, config) {

@@ -21,16 +21,21 @@ namespace SmallRoadWeb.DAL
             try
             {
                 MySqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = @"SELECT 1 FROM tb_usuario WHERE usu_login = @Login AND usu_senha = @Senha"; // SQL
+                cmd.CommandText = @"SELECT usu_nome, usu_tipo FROM tb_usuario WHERE usu_login = @Login AND usu_senha = @Senha"; // SQL
                 cmd.Parameters.AddWithValue("@Login", usuario.Login);
                 cmd.Parameters.AddWithValue("@Senha", GerarHashMd5(usuario.Senha));
                 MySqlDataReader dados = cmd.ExecuteReader(); // Aguarda o resltado em um data Reader
 
-                HttpContext.Current.Session["Logado"] = "true";
+                bool logado = false;
 
-                UsuarioController.Logado = dados.HasRows;
+                if (dados.Read())
+                {
+                    HttpContext.Current.Session["NomeUsuario"] = dados["usu_nome"];
+                    HttpContext.Current.Session["TipoUsuario"] = dados["usu_tipo"];
+                    logado = true;
+                }
 
-                return dados.HasRows;
+                return logado;
             }
             catch
             {

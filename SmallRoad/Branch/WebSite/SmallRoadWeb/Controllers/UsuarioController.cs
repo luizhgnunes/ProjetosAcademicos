@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.Services;
+using System.Web.Security;
 
 namespace SmallRoadWeb.Controllers
 {
@@ -31,12 +31,26 @@ namespace SmallRoadWeb.Controllers
         }
 
         [HttpPost]
-        //[WebMethod(EnableSession = true)]
-        public bool Logar(Usuario usuario)
+        public JsonResult Logar(Usuario usuario)
         {
             //System.Web.HttpContext.Current.Session["Logado"] = "true";
             UsuarioDal usuarioDal = new UsuarioDal();
-            return usuarioDal.Logar(usuario);
+            if (usuarioDal.Logar(usuario))
+            {
+                Usuario usu = new Usuario();
+                usu.Nome = System.Web.HttpContext.Current.Session["NomeUsuario"].ToString();
+                usu.TipoUsuario = Convert.ToChar(System.Web.HttpContext.Current.Session["TipoUsuario"]);
+                return Json(usu, JsonRequestBehavior.AllowGet); ;
+            }
+            return null;
+        }
+
+        [HttpGet]
+        public void Deslogar()
+        {
+            FormsAuthentication.SignOut();
+            System.Web.HttpContext.Current.Session.Abandon();
+            Response.Redirect("~/Home/");
         }
     }
 }
