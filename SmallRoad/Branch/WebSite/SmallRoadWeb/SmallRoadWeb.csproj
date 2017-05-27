@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>SmallRoadWeb.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,6 +43,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>SmallRoadWeb.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -172,10 +174,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NotaFiscalController.cs" />
-    <Compile Include="Controllers\RoteiroMotoristaController.cs" />
+    <Compile Include="Controllers\RoteiroController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="DAL\Connection.cs" />
     <Compile Include="DAL\DestinatarioDal.cs" />
@@ -215,8 +216,8 @@
     <Content Include="Lib\JQuery\jquery-3.1.1.min.js" />
     <Content Include="Lib\Ui-bootstrap\ui-bootstrap-tpls-0.14.3.min.js" />
     <Content Include="Scripts\diretivas.js" />
-    <Content Include="Scripts\Views\roteiroMotorista.js" />
-    <Content Include="Scripts\Views\home.js" />
+    <Content Include="Scripts\Views\roteiro.js" />
+    <Content Include="Scripts\Views\login.js" />
     <Content Include="Scripts\Views\pedido.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -230,8 +231,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -244,12 +244,6 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
@@ -272,8 +266,9 @@
     <Content Include="Lib\Bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Lib\Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Project_Readme.html" />
-    <Content Include="Views\RoteiroMotorista\Index.cshtml" />
-    <Content Include="Views\Shared\_Motorista.cshtml" />
+    <Content Include="Views\Roteiro\Index.cshtml" />
+    <Content Include="Views\Shared\_Principal.cshtml" />
+    <Content Include="SmallRoadWeb.ruleset" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

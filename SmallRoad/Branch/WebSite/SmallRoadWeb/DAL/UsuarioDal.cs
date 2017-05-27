@@ -30,8 +30,11 @@ namespace SmallRoadWeb.DAL
 
                 if (dados.Read())
                 {
-                    HttpContext.Current.Session["NomeUsuario"] = dados["usu_nome"];
-                    HttpContext.Current.Session["TipoUsuario"] = dados["usu_tipo"];
+                    if (!MvcApplication.DEBUG_MODE)
+                    {
+                        HttpContext.Current.Session["NomeUsuario"] = dados["usu_nome"];
+                        HttpContext.Current.Session["TipoUsuario"] = dados["usu_tipo"];
+                    }
                     logado = true;
                 }
 
