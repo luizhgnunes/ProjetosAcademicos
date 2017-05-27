@@ -213,9 +213,11 @@
     <Content Include="Lib\Bootstrap\js\bootstrap.js" />
     <Content Include="Lib\Bootstrap\js\bootstrap.min.js" />
     <Content Include="Lib\Bootstrap\js\npm.js" />
+    <Content Include="Lib\BuscaCep\busca-cep.js" />
     <Content Include="Lib\JQuery\jquery-3.1.1.min.js" />
     <Content Include="Lib\Ui-bootstrap\ui-bootstrap-tpls-0.14.3.min.js" />
     <Content Include="Scripts\diretivas.js" />
+    <Content Include="Scripts\Views\usuario-cadastrar.js" />
     <Content Include="Scripts\Views\roteiro.js" />
     <Content Include="Scripts\Views\login.js" />
     <Content Include="Scripts\Views\pedido.js" />
@@ -250,7 +252,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\NotaFiscal\" />
-    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -269,6 +270,7 @@
     <Content Include="Views\Roteiro\Index.cshtml" />
     <Content Include="Views\Shared\_Principal.cshtml" />
     <Content Include="SmallRoadWeb.ruleset" />
+    <Content Include="Views\Usuario\Cadastrar.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

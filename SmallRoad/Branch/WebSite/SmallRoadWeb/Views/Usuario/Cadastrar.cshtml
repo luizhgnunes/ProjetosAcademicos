@@ -1,0 +1,161 @@
+﻿
+@{
+    ViewBag.Title = "Cadastrar";
+}
+
+<h2>Cadastrar</h2>
+
+<div ng-app="UsuarioCadastrarApp">
+    <div class="container" ng-controller="UsuarioCadastrarController">
+        <div class="row" ng-show="enviado">
+            <div class="alert alert-success" role="alert">
+                <p>Usuário cadastrado com sucesso!</p>
+            </div>
+        </div>
+        <div class="row" ng-show="myForm.$invalid && submited">
+            <div class="alert alert-danger" role="alert">
+                <p class="error-span" ng-show="myForm.usuarioTipo.$invalid && (!myForm.usuarioTipo.$pristine || submited)">Preencha o tipo de pessoa</p>
+                <p class="error-span" ng-show="myForm.usuarioNome.$invalid && (!myForm.usuarioNome.$pristine || submited)">Preencha o nome</p>
+                <p class="error-span" ng-show="myForm.usuarioLogin.$invalid && (!myForm.usuarioLogin.$pristine || submited)">Preencha o login</p>
+                <p class="error-span" ng-show="myForm.usuarioSenha.$invalid && (!myForm.usuarioSenha.$pristine || submited)">Preencha a senha</p>
+                <p class="error-span" ng-show="myForm.usuarioConfirmarSenha.$invalid && (!myForm.usuarioConfirmarSenha.$pristine || submited)">Confirme a senha</p>
+                <p class="error-span" ng-show="myForm.usuarioCpfCnpj.$invalid && (!myForm.usuarioCpfCnpj.$pristine || submited)">{{ Usuario.Tipo == 'J' && 'Preencha o CNPJ' || 'Preencha o CPF' }}</p>
+                <p class="error-span" ng-show="myForm.usuarioEmail.$invalid && (!myForm.usuarioEmail.$pristine || submited)">Preencha o e-mail</p>
+                <p class="error-span" ng-show="myForm.usuarioTelefone.$invalid && (!myForm.usuarioTelefone.$pristine || submited)">Preencha o telefone</p>
+                <p class="error-span" ng-show="myForm.cep.$invalid && (!myForm.cep.$pristine || submited)">Preencha o CEP</p>
+                <p class="error-span" ng-show="myForm.usuarioNumero.$invalid && (!myForm.usuarioNumero.$pristine || submited)">Preencha o número do endereço</p>
+                <p class="error-span" ng-show="myForm.usuarioComplemento.$invalid && (!myForm.usuarioComplemento.$pristine || submited)">Preencha o Complemento</p>
+            </div>
+        </div>
+        <!-- novalidate desabilita a validação padrão do navegador -->
+        <form name="myForm" ng-submit="submitForm()" novalidate>
+            <div class="form-cadastrar-usuario">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Tipo de Pessoa -->
+                        <br />
+                        <label>
+                            <input type="radio" ng-model="Usuario.Tipo" name="usuarioTipo" value="F" required />
+                            Pessoa F&iacute;sica
+                        </label>&nbsp;
+                        <label>
+                            <input type="radio" ng-model="Usuario.Tipo" name="usuarioTipo" value="J" required />
+                            Pessoa Jur&iacute;dica
+                        </label>
+                        
+                        <br /><br />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group" ng-class="{ 'has-error' : myForm.usuarioNome.$invalid && (!myForm.usuarioNome.$pristine || submited)} ">
+                        <!-- Nome -->
+                        <label for="nome">Nome*</label>
+                        <input ng-model="Usuario.Nome" type="text" name="usuarioNome" class="form-control" maxlength="48" required />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="field-fantasia-data">{{ Usuario.Tipo == 'J' && 'Nome Fantasia' || 'Data do Nascimento' }}</label>
+                        <input ng-model="Usuario.FantasiaData" type="text" class="form-control" id="field-fantasia-data" maxlength="48" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 form-group" ng-class="{ 'has-error' : myForm.usuarioLogin.$invalid && (!myForm.usuarioLogin.$pristine || submited)} ">
+                        <!-- Login -->
+                        <label for="field-login">Login*</label>
+                        <input ng-model="Usuario.Login" type="text" name="usuarioLogin" class="form-control" id="field-login" maxlength="30" required />
+                    </div>
+                    <div class="col-md-4 form-group" ng-class="{ 'has-error' : myForm.usuarioSenha.$invalid && (!myForm.usuarioSenha.$pristine || submited)} ">
+                        <!-- Senha -->
+                        <label for="field-senha">Senha*</label>
+                        <input ng-model="Usuario.Senha" type="password" name="usuarioSenha" class="form-control" id="field-senha" maxlength="32" required />
+                    </div>
+                    <div class="col-md-4 form-group" ng-class="{ 'has-error' : myForm.usuarioConfirmarSenha.$invalid && (!myForm.usuarioConfirmarSenha.$pristine || submited)} ">
+                        <!-- Confirmar Senha -->
+                        <label for="field-confirmar-senha">Confirmar senha*</label>
+                        <input ng-model="Usuario.ConfirmarSenha" type="password" name="usuarioConfirmarSenha" class="form-control" id="field-confirmar-senha" maxlength="32" required />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group" ng-class="{ 'has-error' : myForm.usuarioCpfCnpj.$invalid && (!myForm.usuarioCpfCnpj.$pristine || submited)} ">
+                        <!-- CPF ou CNPJ -->
+                        <label for="field-cpf-cnpj">{{ Usuario.Tipo == 'J' && 'CNPJ' || 'CPF' }}</label>
+                        <input ng-model="Usuario.CpfCnpj" type="text" name="usuarioCpfCnpj" class="form-control" id="field-cpf-cnpj" maxlength="14" required />
+                    </div>
+                    <div class="col-md-6 form-group" ng-class="{ 'has-error' : myForm.usuarioEmail.$invalid && (!myForm.usuarioEmail.$pristine || submited)} ">
+                        <!-- E-mail -->
+                        <label for="field-email">Email*</label>
+                        <input ng-model="Usuario.Email" type="text" name="usuarioEmail" class="form-control" id="field-email" maxlength="55" required />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <!-- Telefone Comercial -->
+                        <div class="form-group" ng-class="{ 'has-error' : myForm.usuarioTelefone.$invalid && (!myForm.usuarioTelefone.$pristine || submited)} ">
+                            <label>Telefone Comercial (com DDD)*</label>
+                            <input ng-model="Usuario.Telefone" type="text" name="usuarioTelefone" class="form-control" id="field-telefone" maxlength="10" placeholder="Comercial" required />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- Telefone Celular -->
+                        <div class="form-group">
+                            <label>Telefone Celular (com DDD)*</label>
+                            <input ng-model="Usuario.Telefone2" type="text" class="form-control" id="field-telefone2" maxlength="10" placeholder="Celular" />
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <!-- CEP -->
+                        <div class="form-group" ng-class="{ 'has-error' : myForm.cep.$invalid && (!myForm.cep.$pristine || submited)} ">
+                            <label for="field-cep">CEP*</label>
+                            <input ng-model="Usuario.Cep" type="text" name="cep" class="form-control" id="cep" maxlength="9" onblur="pesquisacep(this.value);" required />
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <!-- Número -->
+                        <div class="form-group" ng-class="{ 'has-error' : myForm.usuarioNumero.$invalid && (!myForm.usuarioNumero.$pristine || submited)} ">
+                            <label for="field-cep">Numero*</label>
+                            <input ng-model="Usuario.Numero" type="text" name="usuarioNumero" class="form-control" id="field-cep" maxlength="9" onblur="" required />
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <!-- Complemento -->
+                        <div class="form-group" ng-class="{ 'has-error' : myForm.usuarioComplemento.$invalid && (!myForm.usuarioComplemento.$pristine || submited)} ">
+                            <label for="field-cep">Complemento*</label>
+                            <input ng-model="Usuario.Complemento" type="text" name="usuarioComplemento" class="form-control" id="field-cep" maxlength="9" onblur="atualizacep(this.value)" required />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Rua -->
+            <label>Endere&ccedil;o*</label>
+            <input ng-model="Usuario.Rua" type="text" class="form-control" id="rua" name="rua" readonly /><br />
+
+            <!-- Bairro -->
+            <label>Bairro</label>
+            <input ng-model="Usuario.Bairro" type="text" class="form-control" id="bairro" name="bairro" readonly /><br />
+
+            <!-- Município -->
+            <label>Munic&iacute;pio</label>
+            <input ng-model="Usuario.Municipio" type="text" class="form-control" id="cidade"  name="cidade" readonly /><br />
+
+            <!-- UF -->
+            <label>UF</label>
+            <input ng-model="Usuario.Uf" type="text" class="form-control" id="uf" name="uf" readonly /><br />
+
+            <button type="submit" class="btn btn-warning" ng-click="checkFields()">Cadastrar</button>
+        </form>
+    </div>
+</div>
+
+<script src="~/Lib/JQuery/jquery-3.1.1.min.js"></script>
+<script src="~/Lib/AngularJS/angular.min.js"></script>
+<script src="~/Lib/Ui-bootstrap/ui-bootstrap-tpls-0.14.3.min.js"></script>
+<script src="~/Lib/Bootstrap/js/bootstrap.min.js"></script>
+<script src="~/Scripts/Views/usuario-cadastrar.js"></script>
+<script src="~/Lib/BuscaCep/busca-cep.js"></script>
+<script src="~/Scripts/diretivas.js"></script>

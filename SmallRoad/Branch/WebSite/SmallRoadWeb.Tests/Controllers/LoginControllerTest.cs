@@ -29,7 +29,6 @@ namespace SmallRoadWeb.Tests.Controllers
         }
 
         [TestMethod]
-        //[WebMethod(EnableSession = true)]
         public void Logar()
         {
             Usuario usuario = new Usuario();
@@ -44,15 +43,15 @@ namespace SmallRoadWeb.Tests.Controllers
         }
 
         [TestMethod]
-        //[WebMethod(EnableSession = true)]
         public void LogarSenhaErrada()
         {
             Usuario usuario = new Usuario();
             usuario.Login = "luizhgnunes";
             usuario.Senha = "1234567";
 
-            UsuarioController uc = new UsuarioController();
-            //Assert.IsFalse(uc.Logar(usuario));
+            LoginController lc = new LoginController();
+
+            Assert.IsNull(lc.Logar(usuario));
         }
     }
 }

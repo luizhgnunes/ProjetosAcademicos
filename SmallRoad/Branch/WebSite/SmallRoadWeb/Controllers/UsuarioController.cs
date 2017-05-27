@@ -11,7 +11,7 @@ namespace SmallRoadWeb.Controllers
     public class UsuarioController : Controller
     {
         // GET: Usuario
-        public ActionResult Index()
+        public ActionResult Cadastrar()
         {
             return View();
         }
